@@ -33,9 +33,11 @@ sudo cp fix-audio.service /etc/systemd/system/
 
 ### 3. Enable and start
 
+```bash
 sudo systemctl daemon-reload
 sudo systemctl enable fix-audio.service
 sudo reboot
+```
 
 # Important Information
 
