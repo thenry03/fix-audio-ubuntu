@@ -1,9 +1,20 @@
 #!/bin/bash
 
+# If your sound card is not Card 0, Device 0, replace hwC0D0 with your identifier (check 'aplay -l')
+CARD_DEVICE="/dev/snd/hwC0D0"
+MAX_TRIES=20
+COUNT=0
+
 # Prevents race conditions when using the script as a service at boot
-while [ ! -e /dev/snd/hwC0D0 ]; do
+while [ ! -e "$CARD_DEVICE" ] && [$COUNT -lt $MAX_TRIES]; do
 	sleep 0.5
+	((COUNT++))
 done
+
+if [ ! -e "$CARD_DEVICE" ]; then
+    echo "Error: Audio device $CARD_DEVICE not found after 10 seconds. Exiting."
+    exit 1
+fi
 
 echo "Running the necessary-verbs.sh script..."
 
