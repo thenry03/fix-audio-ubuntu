@@ -23,6 +23,13 @@ sudo cp necessary-verbs-service-version.sh /usr/local/sbin/
 sudo chmod +x /usr/local/sbin/necessary-verbs.sh
 ```
 
+If your audio card is different from the default (hwC0D0), you must change the $CARD_DEVICE variable value within the script file. You may use the following command to find your device ID:
+
+```bash
+aplay -l
+```
+Then, simply copy that value and use your text editor of choice to modify the script.
+
 ### 2. Configure the systemd Service
 
 Copy the service file provided in this repository to the systemd configuration folder:
