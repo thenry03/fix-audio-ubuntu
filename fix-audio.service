@@ -4,7 +4,7 @@ After=sound.target
 
 [Service]
 Type=oneshot
-ExecStart=/bin/bash /usr/local/sbin/necessary-verbs.sh
+ExecStart=/bin/bash /usr/local/sbin/necessary-verbs-service-version.sh
 RemainAfterExit=yes
 User=root
 TimeoutSec=0
